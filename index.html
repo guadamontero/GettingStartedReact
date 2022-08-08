@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Clase3</title>
+</head>
+<body>
+    <div id="root"></div>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <script type="text/babel">
+    
+    const jhonny =
+    {
+      name: "Jhonny",
+      lastName: "Depp",
+      age: 50,
+      nacionality: "USA",
+      experience: [
+        "Piratas del Caribe",
+        "Jhonny scissors hands",
+        "Trascendent"
+        ],
+        education: [
+            "University of Arts",
+            "University of UCLA"
+        ],
+        image: "https://zipfm.net/storage/2022/06/johnnydepp.jpg",
+        bio: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto eos, temporibus laborum doloribus eum odit, ipsam sint aliquid, ad dolorem libero facere. Eum non quasi similique nostrum possimus ad praesentium. Eius dignissimos cum, itaque placeat ut, consectetur quas architecto eum eaque blanditiis dolor expedita quisquam amet maiores iste saepe cupiditate."
+    }
+
+    const Header = (props) => {
+        return (
+            <header className="encabezado">
+            <nav>
+                <ul className="menu">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Career</a></li>
+                    <li><a href="#">Education</a></li>
+                </ul>
+            </nav>
+        </header>
+        )
+    } 
+
+    const Card = ({props}) => {
+        const {name, image, lastName, age, nacionality, experience, education, bio} = props
+        return (
+        <div className="card">
+            <div className="img">
+                <img src={image} alt="img-jhonny" />
+            </div>
+            <div className="text">
+                <h3>Personal information</h3>
+                <p><span>Name:</span> {name}</p>
+                <p><span>Last name:</span> {lastName}</p>
+                <p><span>Edad:</span> {age}</p>
+                <p><span>Nacionalidad:</span> {nacionality}</p>
+                <h3>Movie experience</h3>
+                <ul>
+                    {experience.map((movie) => <li>{movie}</li>)}
+                </ul>
+                <h3>Education</h3>
+                <ul>
+                    {education.map((university) => <li>{university}</li>)}
+                </ul>
+                <h3>Bio:</h3>
+                <p>{bio}</p>
+            </div>
+        </div>
+        )
+    }
+
+    const App = (
+        <div>
+          <Header />
+          <Card props={jhonny} />
+        </div>
+    )
+
+    const app = document.getElementById("root");
+    const root = ReactDOM.createRoot(app)
+    root.render(App)
+
+  </script>
+</body>
+</html>
